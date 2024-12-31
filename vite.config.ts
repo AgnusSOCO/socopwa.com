@@ -20,16 +20,13 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true
+      },
+      format: {
+        comments: false
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
-    exclude: ['lucide-react']
-  },
-  server: {
-    fs: {
-      strict: true
-    }
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
   }
 });
