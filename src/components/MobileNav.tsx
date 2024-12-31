@@ -8,7 +8,7 @@ interface MobileNavProps {
   onClose: () => void;
 }
 
-const CALENDAR_URL = 'https://cal.com/juan-carlos-r-cordero-cflxoe/soco-pwa-consultation-meeting';
+const CALENDAR_URL = 'https://cal.com/socopwa/soco-pwa-consultation-meeting';
 
 const menuItems = [
   { 
