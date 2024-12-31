@@ -9,7 +9,7 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'framer-motion': ['framer-motion'],
-          'ui-components': ['./src/components']
+          'lucide': ['lucide-react']
         }
       }
     },
