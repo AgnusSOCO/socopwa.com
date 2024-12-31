@@ -12,23 +12,51 @@ export function HeroHeadline() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none mb-6">
+        <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white leading-none mb-6">
           <span className="inline-flex items-center gap-4">
             <Rocket className="w-8 h-8 sm:w-12 sm:h-12 text-blue-400" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-white">
+            <motion.span 
+              className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-white"
+              animate={shouldReduceMotion ? {} : {
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              style={{ backgroundSize: '200% auto' }}
+            >
               Transform
-            </span>
+            </motion.span>
             <Sparkles className="w-8 h-8 sm:w-12 sm:h-12 text-purple-400" />
           </span>
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+          <motion.span 
+            className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400"
+            animate={shouldReduceMotion ? {} : {
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 0.5
+            }}
+            style={{ backgroundSize: '200% auto' }}
+          >
             Your Future
-          </span>
+          </motion.span>
         </h1>
 
-        <p className="text-xl sm:text-2xl text-blue-100/90 max-w-2xl mx-auto">
+        <motion.p 
+          className="text-2xl sm:text-3xl text-blue-100/90 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           Where Innovation Meets Excellence
-        </p>
+        </motion.p>
       </motion.div>
     </div>
   );
