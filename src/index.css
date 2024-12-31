@@ -1,0 +1,43 @@
+/* Base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Critical CSS for initial render */
+:root {
+  color-scheme: dark;
+}
+
+/* Prevent FOUC and flickering */
+html {
+  background-color: #111827;
+}
+
+/* Prevent layout shifts */
+body {
+  @apply antialiased;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    view-timeline-name: --reveal;
+    view-timeline-axis: block;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+  }
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
