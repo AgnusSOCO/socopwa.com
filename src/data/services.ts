@@ -1,8 +1,17 @@
+import { LucideIcon } from 'lucide-react';
 import { Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint } from 'lucide-react';
 
-export const services = [
+interface Service {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  link: string;
+  features: string[];
+}
+
+export const services: Service[] = [
   {
-    icon: <Brain className="w-8 h-8" />,
+    icon: Brain,
     title: "AI Integration",
     description: "Transform your business with cutting-edge AI solutions. We help you implement machine learning, natural language processing, and predictive analytics.",
     link: "/services/ai-integration",
@@ -14,7 +23,7 @@ export const services = [
     ]
   },
   {
-    icon: <Wallet className="w-8 h-8" />,
+    icon: Wallet,
     title: "FinTech Solutions",
     description: "Modernize your financial services with cutting-edge technology. From digital payments to blockchain integration, we help you innovate.",
     link: "/services/fintech",
@@ -26,7 +35,7 @@ export const services = [
     ]
   },
   {
-    icon: <Fingerprint className="w-8 h-8" />,
+    icon: Fingerprint,
     title: "Digital ID",
     description: "Implement secure and efficient digital identity solutions. From biometric authentication to identity management systems.",
     link: "/services/digital-id",
@@ -38,7 +47,7 @@ export const services = [
     ]
   },
   {
-    icon: <Box className="w-8 h-8" />,
+    icon: Box,
     title: "Google Workspace",
     description: "Modernize your company with Google Workspace. We assist with training, implementation, and ongoing support.",
     link: "/services/google-workspace",
@@ -50,7 +59,7 @@ export const services = [
     ]
   },
   {
-    icon: <Shield className="w-8 h-8" />,
+    icon: Shield,
     title: "Cybersecurity",
     description: "Protect your digital assets with our robust cybersecurity measures, ensuring your business stays secure and resilient against threats.",
     link: "/services/cybersecurity",
@@ -62,7 +71,7 @@ export const services = [
     ]
   },
   {
-    icon: <Cloud className="w-8 h-8" />,
+    icon: Cloud,
     title: "Cloud Services",
     description: "Enhance flexibility and scalability with our cloud solutions, tailored to meet the demands of your growing business.",
     link: "/services/cloud-services",
@@ -74,7 +83,7 @@ export const services = [
     ]
   },
   {
-    icon: <Users className="w-8 h-8" />,
+    icon: Users,
     title: "IT Consulting",
     description: "Strategic technology consulting to help your business innovate, grow, and stay competitive in the digital age.",
     link: "/services/it-consulting",
