@@ -5,7 +5,7 @@ import { Logo } from './Logo';
 import { ServicesDropdown } from './ServicesDropdown';
 import { MobileNav } from './MobileNav';
 
-const CALENDAR_URL = 'https://cal.com/juan-carlos-r-cordero-cflxoe/soco-pwa-consultation-meeting';
+const CALENDAR_URL = 'https://cal.com/socopwa/soco-pwa-consultation-meeting';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
