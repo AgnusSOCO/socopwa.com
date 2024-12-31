@@ -69,7 +69,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             <div className="flex flex-col min-h-screen">
               <div className="p-4 border-b flex items-center justify-between">
                 <Link to="/" onClick={onClose} className="block w-32">
-                  <img src="/logo.png" alt="SOCO PWA" className="w-full" />
+                  <img src="/logo-2.png" alt="SOCO PWA" className="w-full" />
                 </Link>
                 <button
                   onClick={onClose}
