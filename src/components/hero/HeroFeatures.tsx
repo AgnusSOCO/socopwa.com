@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2 } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 export function HeroFeatures() {
   return (
@@ -26,14 +26,14 @@ export function HeroFeatures() {
         <div className="relative bg-white/5 backdrop-blur-lg p-6 sm:p-8 rounded-lg border border-white/10">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <div className="text-blue-400 p-3 bg-white/5 rounded-lg flex-shrink-0">
-              <Building2 className="w-8 h-8" />
+              <Award className="w-8 h-8" />
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                Trusted Technology Partner of the Mexican Government
+                Global Technology Excellence
               </h3>
               <p className="text-sm sm:text-base text-blue-100/80">
-                Delivering innovative AI, Fintech, and IT solutions for federal institutions
+                Delivering innovative AI solutions and digital transformation for enterprises worldwide
               </p>
             </div>
           </div>
