@@ -1,5 +1,5 @@
-import { LucideIcon } from 'lucide-react';
 import { Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface Service {
   icon: LucideIcon;
