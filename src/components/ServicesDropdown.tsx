@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint } from 'lucide-react';
+import { ChevronDown, Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint, Gamepad2 } from 'lucide-react';
 
 const services = [
   {
@@ -25,6 +25,11 @@ const services = [
         name: 'Cybersecurity',
         path: '/services/cybersecurity',
         icon: <Shield className="w-4 h-4" />,
+      },
+      {
+        name: 'Cybersecurity Training',
+        path: '/services/cybersecurity-training',
+        icon: <Gamepad2 className="w-4 h-4" />,
       },
       {
         name: 'Digital ID',
