@@ -1,4 +1,4 @@
-import { Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint } from 'lucide-react';
+import { Brain, Box, Shield, Cloud, Users, Wallet, Fingerprint, Gamepad2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 interface Service {
@@ -68,6 +68,18 @@ export const services: Service[] = [
       "Data Protection",
       "Security Audits",
       "Compliance Management"
+    ]
+  },
+  {
+    icon: Gamepad2,
+    title: "Cybersecurity Training",
+    description: "Transform your team's security skills with our innovative, game-based cybersecurity training solutions.",
+    link: "/services/cybersecurity-training",
+    features: [
+      "Game-Based Learning",
+      "Simulated Environments",
+      "Certification Alignment",
+      "Progress Tracking"
     ]
   },
   {
