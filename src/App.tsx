@@ -15,6 +15,7 @@ const ServicesPage = React.lazy(() => import('./pages/ServicesPage'));
 const AIIntegration = React.lazy(() => import('./pages/services/AIIntegration'));
 const CloudServices = React.lazy(() => import('./pages/services/CloudServices'));
 const Cybersecurity = React.lazy(() => import('./pages/services/Cybersecurity'));
+const CybersecurityTraining = React.lazy(() => import('./pages/services/CybersecurityTraining'));
 const GoogleWorkspace = React.lazy(() => import('./pages/services/GoogleWorkspace'));
 const ITConsulting = React.lazy(() => import('./pages/services/ITConsulting'));
 const FinTech = React.lazy(() => import('./pages/services/FinTech'));
@@ -40,6 +41,7 @@ export default function App() {
                   <Route path="/services/ai-integration" element={<AIIntegration />} />
                   <Route path="/services/cloud-services" element={<CloudServices />} />
                   <Route path="/services/cybersecurity" element={<Cybersecurity />} />
+                  <Route path="/services/cybersecurity-training" element={<CybersecurityTraining />} />
                   <Route path="/services/google-workspace" element={<GoogleWorkspace />} />
                   <Route path="/services/it-consulting" element={<ITConsulting />} />
                   <Route path="/services/fintech" element={<FinTech />} />
