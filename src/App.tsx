@@ -28,7 +28,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <ErrorBoundary>
-        <BrowserRouter>
+        <BrowserRouter basename="/">
           <div className="min-h-screen flex flex-col relative bg-white">
             <Navbar />
             <main className="flex-grow relative z-0">
