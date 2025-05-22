@@ -3,24 +3,44 @@ import { motion } from 'framer-motion';
 
 const partners = [
   {
-    name: "Google Cloud",
-    logo: "https://www.gstatic.com/images/branding/product/2x/google_cloud_64dp.png",
-    description: "Premier Partner"
-  },
-  {
     name: "Microsoft",
     logo: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31",
-    description: "Gold Partner"
+    description: "Cloud computing and enterprise software solutions"
   },
   {
-    name: "Amazon Web Services",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-    description: "Advanced Partner"
+    name: "Cisco",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",
+    description: "Networking technology and IT infrastructure solutions"
   },
   {
-    name: "OpenAI",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
-    description: "AI Innovation Partner"
+    name: "Dell Technologies",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg",
+    description: "Enterprise hardware and digital transformation solutions"
+  },
+  {
+    name: "VMware",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg",
+    description: "Virtualization and cloud infrastructure solutions"
+  },
+  {
+    name: "Palo Alto Networks",
+    logo: "https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/primary-company-logo-color-rgb.png",
+    description: "Next-generation cybersecurity solutions"
+  },
+  {
+    name: "Fortinet",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/62/Fortinet_logo.svg",
+    description: "Advanced cybersecurity solutions and network security"
+  },
+  {
+    name: "HPE",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Hewlett_Packard_Enterprise_logo.svg",
+    description: "Enterprise technology and solutions provider"
+  },
+  {
+    name: "Verkada",
+    logo: "https://assets-global.website-files.com/5e7c982b7518ee8a6c3c2d1b/5e7c982b7518ee7b913c2d5e_verkada-logo-black.svg",
+    description: "Leading provider of enterprise security solutions"
   }
 ];
 
