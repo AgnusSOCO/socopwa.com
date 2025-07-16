@@ -33,11 +33,19 @@ const Header: React.FC = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <img 
-              src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
-              alt="SOCO PWA Logo" 
-              className="w-10 h-10 object-contain"
-            />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img 
+                src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
+                alt="SOCO PWA Logo" 
+                className="max-w-full max-h-full object-contain filter brightness-100"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={(e) => {
+                  e.currentTarget.style.display = 'block';
+                }}
+              />
+            </div>
             <span className="text-xl font-bold text-white ml-3">SOCO PWA</span>
           </div>
 
