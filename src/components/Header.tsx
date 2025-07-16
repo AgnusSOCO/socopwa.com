@@ -34,7 +34,7 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <img 
-              src="https://idoxd7s.sufydely.com/logo-white.png" 
+              src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
               alt="SOCO PWA Logo" 
               className="w-10 h-10 object-contain"
             />
