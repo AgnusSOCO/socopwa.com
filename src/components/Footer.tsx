@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src="https://idoxd7s.sufydely.com/logo-white.png" 
+                src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
                 alt="SOCO PWA Logo" 
                 className="w-10 h-10 object-contain"
               />
