@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="w-20 h-20 flex items-center justify-center">
+              <div className="w-48 h-24 flex items-center justify-center">
                 <img 
                   src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
                   alt="SOCO PWA Logo" 
