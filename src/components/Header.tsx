@@ -33,7 +33,7 @@ const Header: React.FC = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <div className="w-16 h-16 flex items-center justify-center">
+            <div className="w-40 h-20 flex items-center justify-center">
               <img 
                 src="https://res.cloudinary.com/dunndxabk/image/upload/v1752686851/logo-white_tkyh0d.png" 
                 alt="SOCO PWA Logo" 
