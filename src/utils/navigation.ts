@@ -145,3 +145,28 @@ export const handleBookDemo = (bookingUrl: string, source?: string): void => {
     openExternalLink(bookingUrl, source);
   }
 };
+
+/**
+ * Open WhatsApp chat with pre-filled message
+ */
+export const goToWhatsApp = (options?: { service?: string; source?: string; message?: string }): void => {
+  const { service, source, message } = options || {};
+  
+  if (source) {
+    trackEvent('whatsapp_click', {
+      source,
+      service: service || 'none'
+    });
+  }
+
+  import('../config/constants').then(({ WHATSAPP_PHONE }) => {
+    const defaultMessage = service 
+      ? `Hola, me interesa ${service}` 
+      : 'Hola, me interesa conocer más sobre sus servicios';
+    
+    const finalMessage = message || defaultMessage;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(finalMessage)}`;
+    
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  });
+};
