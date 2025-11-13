@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, MapPin, Send } from 'lucide-react';
+import { openExternalLink } from '../utils/navigation';
+import { CALENDLY_URL } from '../config/constants';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,10 @@ const Contact: React.FC = () => {
     company: '',
     message: ''
   });
+  const [prefilledService, setPrefilledService] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -18,11 +24,61 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          service: prefilledService,
+          source: new URLSearchParams(window.location.search).get('source') || 'direct',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form');
+      }
+
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: ''
+      });
+      setPrefilledService('');
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  useEffect(() => {
+    const handlePrefillService = (event: CustomEvent) => {
+      const { service } = event.detail;
+      setPrefilledService(service);
+    };
+
+    window.addEventListener('prefillService', handlePrefillService as EventListener);
+
+    return () => {
+      window.removeEventListener('prefillService', handlePrefillService as EventListener);
+    };
+  }, []);
 
   return (
     <section id="contact" className="py-20 relative">
@@ -36,6 +92,30 @@ const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
+            {prefilledService && (
+              <div className="mb-6 p-4 bg-white/10 border border-white/20 rounded-lg">
+                <p className="text-white text-sm">
+                  <span className="font-semibold">Interested in:</span> {prefilledService}
+                </p>
+              </div>
+            )}
+            
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
+                <p className="text-green-400 text-sm font-semibold">
+                  ✓ Thank you for contacting us! We'll get back to you soon.
+                </p>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                <p className="text-red-400 text-sm font-semibold">
+                  ✗ {errorMessage}
+                </p>
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -135,10 +215,20 @@ const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-white hover:bg-gray-200 text-black font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2"
+                disabled={isSubmitting}
+                className="w-full bg-white hover:bg-gray-200 text-black font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Send size={20} />
-                <span>Send Message</span>
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
@@ -179,7 +269,10 @@ const Contact: React.FC = () => {
               <p className="text-gray-300 mb-6">
                 Let's discuss how our innovative solutions can help your business thrive in the digital age.
               </p>
-              <button className="bg-white hover:bg-gray-200 text-black font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105">
+              <button 
+                onClick={() => openExternalLink(CALENDLY_URL, 'contact_schedule')}
+                className="bg-white hover:bg-gray-200 text-black font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
+              >
                 Schedule a Consultation
               </button>
             </div>

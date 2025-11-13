@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { goToContact } from '../utils/navigation';
 
 interface ServiceModalProps {
   isOpen: boolean;
@@ -27,6 +28,38 @@ interface ServiceModalProps {
 }
 
 const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscKey);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (isOpen && modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      if (firstElement) {
+        firstElement.focus();
+      }
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -37,12 +70,16 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-50 flex items-center justify-center p-4"
         onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
       >
         {/* Backdrop */}
         <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
         
         {/* Modal Container */}
         <motion.div
+          ref={modalRef}
           initial={{ scale: 0.95, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -58,7 +95,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                   <service.icon size={24} className="text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">{service.title}</h2>
+                  <h2 id="modal-title" className="text-2xl font-bold text-white">{service.title}</h2>
                   <p className="text-gray-300 text-sm mt-1">{service.description}</p>
                 </div>
               </div>
@@ -189,10 +226,22 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 <p className="text-gray-400 text-sm">Contact us for a personalized consultation</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                <button className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-all duration-200 hover:scale-105">
+                <button 
+                  onClick={() => {
+                    onClose();
+                    goToContact({ service: service.title, source: 'service_modal_learn_more' });
+                  }}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-all duration-200 hover:scale-105"
+                >
                   Learn More
                 </button>
-                <button className="px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2">
+                <button 
+                  onClick={() => {
+                    onClose();
+                    goToContact({ service: service.title, source: 'service_modal_quote' });
+                  }}
+                  className="px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2"
+                >
                   <span>Get Quote</span>
                   <ArrowRight size={16} />
                 </button>

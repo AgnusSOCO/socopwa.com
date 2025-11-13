@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { goToContact } from '../utils/navigation';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,7 +62,10 @@ const Header: React.FC = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
+            <button 
+              onClick={() => goToContact({ source: 'header' })}
+              className="bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
+            >
               Get Started
             </button>
           </div>
@@ -70,6 +74,8 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-300 hover:text-white"
+              aria-expanded={isMobileMenuOpen}
+              aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -88,7 +94,13 @@ const Header: React.FC = () => {
                 {item.name}
               </a>
             ))}
-            <button className="w-full bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium mt-4 transition-all duration-200">
+            <button 
+              onClick={() => {
+                goToContact({ source: 'header_mobile' });
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium mt-4 transition-all duration-200"
+            >
               Get Started
             </button>
           </div>

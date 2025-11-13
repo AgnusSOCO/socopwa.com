@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Brain, 
   CreditCard, 
@@ -12,9 +12,30 @@ import {
   ArrowRight
 } from 'lucide-react';
 import ServiceModal from './ServiceModal';
+import { goToContact } from '../utils/navigation';
+
+interface Service {
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  title: string;
+  description: string;
+  features: string[];
+  gradient: string;
+  iconBg: string;
+  detailedInfo: {
+    overview: string;
+    benefits: string[];
+    process: string[];
+    technologies: string[];
+    pricing: {
+      starter: { price: string; features: string[] };
+      professional: { price: string; features: string[] };
+      enterprise: { price: string; features: string[] };
+    };
+  };
+}
 
 const Services: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   const services = [
     {
@@ -323,9 +344,24 @@ const Services: React.FC = () => {
     }
   ];
 
-  const openModal = (service: any) => {
+  const openModal = (service: Service) => {
     setSelectedService(service);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get('service');
+    
+    if (serviceParam) {
+      const matchingService = services.find(
+        s => s.title.toLowerCase().replace(/\s+/g, '-') === serviceParam.toLowerCase()
+      );
+      
+      if (matchingService) {
+        setSelectedService(matchingService);
+      }
+    }
+  }, []);
 
   return (
     <section id="services" className="py-24 relative overflow-hidden">
@@ -414,7 +450,10 @@ const Services: React.FC = () => {
           <p className="text-gray-400 mb-6">
             Ready to transform your business with our innovative solutions?
           </p>
-          <button className="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-200 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/25">
+          <button 
+            onClick={() => goToContact({ source: 'services_cta' })}
+            className="inline-flex items-center px-8 py-4 bg-white hover:bg-gray-200 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/25"
+          >
             <span>Get Started Today</span>
             <ArrowRight size={20} className="ml-2" />
           </button>
