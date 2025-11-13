@@ -1,5 +1,7 @@
 import React from 'react';
 import DemoWidget from './DemoWidget';
+import { goToService, openExternalLink } from '../utils/navigation';
+import { CALENDLY_URL } from '../config/constants';
 
 const DemoSection: React.FC = () => {
   return (
@@ -29,7 +31,7 @@ const DemoSection: React.FC = () => {
             <DemoWidget
               companyName="SOCO PWA"
               demoAudioUrl="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"
-              bookingUrl="#contact"
+              bookingUrl={CALENDLY_URL}
             />
           </div>
         </div>
@@ -40,10 +42,16 @@ const DemoSection: React.FC = () => {
             Ready to transform your customer service experience?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="inline-flex items-center px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
+            <button 
+              onClick={() => openExternalLink(CALENDLY_URL, 'demo_section_consultation')}
+              className="inline-flex items-center px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+            >
               Schedule Consultation
             </button>
-            <button className="inline-flex items-center px-6 py-3 border border-white/20 text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300">
+            <button 
+              onClick={() => goToService('ai-integration', 'demo_section_learn_more')}
+              className="inline-flex items-center px-6 py-3 border border-white/20 text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300"
+            >
               Learn More About Our AI
             </button>
           </div>

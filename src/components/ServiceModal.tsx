@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { goToContact } from '../utils/navigation';
 
 interface ServiceModalProps {
   isOpen: boolean;
@@ -189,10 +190,22 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 <p className="text-gray-400 text-sm">Contact us for a personalized consultation</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                <button className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-all duration-200 hover:scale-105">
+                <button 
+                  onClick={() => {
+                    onClose();
+                    goToContact({ service: service.title, source: 'service_modal_learn_more' });
+                  }}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-all duration-200 hover:scale-105"
+                >
                   Learn More
                 </button>
-                <button className="px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2">
+                <button 
+                  onClick={() => {
+                    onClose();
+                    goToContact({ service: service.title, source: 'service_modal_quote' });
+                  }}
+                  className="px-6 py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2"
+                >
                   <span>Get Quote</span>
                   <ArrowRight size={16} />
                 </button>

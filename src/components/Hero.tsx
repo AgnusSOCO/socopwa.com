@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { goToContact } from '../utils/navigation';
 
 const Hero: React.FC = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -51,7 +52,10 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="animate-fade-in-up" style={{ animationDelay: '1.2s', animationFillMode: 'both' }}>
-            <button className="group relative overflow-hidden bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+            <button 
+              onClick={() => goToContact({ source: 'hero' })}
+              className="group relative overflow-hidden bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+            >
               <span className="mr-8 transition-opacity duration-500 group-hover:opacity-0">
                 Get Started
               </span>
