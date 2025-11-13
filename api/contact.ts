@@ -34,7 +34,6 @@ export default async function handler(
     }
 
     const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
-    const contactEmail = process.env.CONTACT_EMAIL || 'juan@socopwa.com';
 
     const slackMessage = {
       text: '🔔 New Contact Form Submission',
