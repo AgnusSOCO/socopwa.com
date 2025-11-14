@@ -6,6 +6,7 @@ import Services from './components/Services';
 import SuccessStories from './components/SuccessStories';
 import Partners from './components/Partners';
 import Certifications from './components/Certifications';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
@@ -30,6 +31,7 @@ function App() {
         <SuccessStories />
         <Partners />
         <Certifications />
+        <FAQ />
         <Contact />
         <Footer />
       </div>

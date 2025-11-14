@@ -1,0 +1,14 @@
+# robots.txt for socopwa.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://socopwa.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Disallow admin or private paths (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
