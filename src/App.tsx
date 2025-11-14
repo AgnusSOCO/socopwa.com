@@ -13,13 +13,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import CrispChat from './components/CrispChat';
-import UrgencyBanner from './components/UrgencyBanner';
-import StickyBottomCTA from './components/StickyBottomCTA';
 import ExitIntentPopup from './components/ExitIntentPopup';
 import TrustBadgeBar from './components/TrustBadgeBar';
-import SocialProofNotifications from './components/SocialProofNotifications';
 import ROICalculator from './components/ROICalculator';
-import ServiceComparison from './components/ServiceComparison';
 import CalendarEmbed from './components/CalendarEmbed';
 
 function App() {
@@ -36,9 +32,6 @@ function App() {
         
         {/* All content with higher z-index */}
         <div className="relative z-20">
-          {/* Urgency Banner at top */}
-          <UrgencyBanner />
-          
           <Header />
           <Hero />
           
@@ -47,10 +40,6 @@ function App() {
           
           <DemoSection />
           <Services />
-          
-          {/* Service Comparison Tool */}
-          <ServiceComparison />
-          
           <SuccessStories />
           <Partners />
           <TechStack />
@@ -70,8 +59,6 @@ function App() {
         
         {/* Conversion Optimization Overlays */}
         <ExitIntentPopup />
-        <SocialProofNotifications />
-        <StickyBottomCTA />
         <CrispChat />
       </div>
     </LanguageProvider>
