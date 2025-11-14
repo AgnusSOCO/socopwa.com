@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { openExternalLink } from '../utils/navigation';
 import { CALENDLY_URL } from '../config/constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -84,9 +86,9 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Get in touch with us.</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">{t('contact.title')}</h2>
           <p className="text-2xl text-white font-semibold">
-            We're Thrilled to Get Started on Your Project!
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -95,7 +97,7 @@ const Contact: React.FC = () => {
             {prefilledService && (
               <div className="mb-6 p-4 bg-white/10 border border-white/20 rounded-lg">
                 <p className="text-white text-sm">
-                  <span className="font-semibold">Interested in:</span> {prefilledService}
+                  <span className="font-semibold">{t('contact.interestedIn')}</span> {prefilledService}
                 </p>
               </div>
             )}
@@ -103,7 +105,7 @@ const Contact: React.FC = () => {
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
                 <p className="text-green-400 text-sm font-semibold">
-                  ✓ Thank you for contacting us! We'll get back to you soon.
+                  {t('contact.successMessage')}
                 </p>
               </div>
             )}
@@ -111,7 +113,7 @@ const Contact: React.FC = () => {
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
                 <p className="text-red-400 text-sm font-semibold">
-                  ✗ {errorMessage}
+                  {t('contact.errorMessage')} {errorMessage}
                 </p>
               </div>
             )}
@@ -120,7 +122,7 @@ const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
-                    First Name *
+                    {t('contact.form.firstName')} {t('contact.form.required')}
                   </label>
                   <input
                     type="text"
@@ -129,13 +131,13 @@ const Contact: React.FC = () => {
                     required
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    placeholder="John"
+                    placeholder={t('contact.form.placeholders.firstName')}
                     className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors duration-200"
                   />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
-                    Last Name *
+                    {t('contact.form.lastName')} {t('contact.form.required')}
                   </label>
                   <input
                     type="text"
@@ -144,7 +146,7 @@ const Contact: React.FC = () => {
                     required
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    placeholder="Doe"
+                    placeholder={t('contact.form.placeholders.lastName')}
                     className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors duration-200"
                   />
                 </div>
@@ -152,7 +154,7 @@ const Contact: React.FC = () => {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email *
+                  {t('contact.form.email')} {t('contact.form.required')}
                 </label>
                 <input
                   type="email"
@@ -161,14 +163,14 @@ const Contact: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="john@example.com"
+                  placeholder={t('contact.form.placeholders.email')}
                   className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors duration-200"
                 />
               </div>
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-                  Phone Number
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
@@ -176,14 +178,14 @@ const Contact: React.FC = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder={t('contact.form.placeholders.phone')}
                   className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors duration-200"
                 />
               </div>
 
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                  Company Name *
+                  {t('contact.form.company')} {t('contact.form.required')}
                 </label>
                 <input
                   type="text"
@@ -192,14 +194,14 @@ const Contact: React.FC = () => {
                   required
                   value={formData.company}
                   onChange={handleInputChange}
-                  placeholder="Your Company"
+                  placeholder={t('contact.form.placeholders.company')}
                   className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors duration-200"
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Message *
+                  {t('contact.form.message')} {t('contact.form.required')}
                 </label>
                 <textarea
                   id="message"
@@ -208,7 +210,7 @@ const Contact: React.FC = () => {
                   rows={6}
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="How can we help you?"
+                  placeholder={t('contact.form.placeholders.message')}
                   className="w-full px-4 py-3 bg-gray-900/80 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none resize-none transition-colors duration-200"
                 />
               </div>
@@ -221,12 +223,12 @@ const Contact: React.FC = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                    <span>Sending...</span>
+                    <span>{t('contact.form.sending')}</span>
                   </>
                 ) : (
                   <>
                     <Send size={20} />
-                    <span>Send Message</span>
+                    <span>{t('contact.form.sendMessage')}</span>
                   </>
                 )}
               </button>
@@ -235,7 +237,7 @@ const Contact: React.FC = () => {
 
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">{t('contact.info.title')}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -243,11 +245,9 @@ const Contact: React.FC = () => {
                     <MapPin size={20} className="text-black" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">Visit Us</h4>
-                    <p className="text-gray-300">
-                      Avenida Insurgentes Sur. 2453 int. 201<br />
-                      Col. Tizapán Alcaldía Álvaro Obregón<br />
-                      CP 01090 CDMX
+                    <h4 className="text-lg font-semibold text-white mb-1">{t('contact.info.visitUs')}</h4>
+                    <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                      {t('contact.info.address')}
                     </p>
                   </div>
                 </div>
@@ -257,23 +257,23 @@ const Contact: React.FC = () => {
                     <Mail size={20} className="text-black" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">Email Us</h4>
-                    <p className="text-gray-300">contact@socopwa.com</p>
+                    <h4 className="text-lg font-semibold text-white mb-1">{t('contact.info.emailUs')}</h4>
+                    <p className="text-gray-300">{t('contact.info.email')}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm rounded-xl p-8 border border-gray-700/50">
-              <h4 className="text-xl font-bold text-white mb-4">Ready to Transform Your Business?</h4>
+              <h4 className="text-xl font-bold text-white mb-4">{t('contact.cta.title')}</h4>
               <p className="text-gray-300 mb-6">
-                Let's discuss how our innovative solutions can help your business thrive in the digital age.
+                {t('contact.cta.description')}
               </p>
               <button 
                 onClick={() => openExternalLink(CALENDLY_URL, 'contact_schedule')}
                 className="bg-white hover:bg-gray-200 text-black font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
               >
-                Schedule a Consultation
+                {t('common.scheduleConsultation')}
               </button>
             </div>
           </div>

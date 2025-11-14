@@ -1,0 +1,37 @@
+export const contact = {
+  title: 'Contáctanos.',
+  subtitle: '¡Estamos Emocionados de Comenzar con Tu Proyecto!',
+  interestedIn: 'Interesado en:',
+  successMessage: '✓ ¡Gracias por contactarnos! Te responderemos pronto.',
+  errorMessage: '✗',
+  form: {
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    email: 'Correo Electrónico',
+    phone: 'Número de Teléfono',
+    company: 'Nombre de la Empresa',
+    message: 'Mensaje',
+    required: '*',
+    placeholders: {
+      firstName: 'Juan',
+      lastName: 'Pérez',
+      email: 'juan@ejemplo.com',
+      phone: '+52 (55) 0000-0000',
+      company: 'Tu Empresa',
+      message: '¿Cómo podemos ayudarte?',
+    },
+    sending: 'Enviando...',
+    sendMessage: 'Enviar Mensaje',
+  },
+  info: {
+    title: 'Información de Contacto',
+    visitUs: 'Visítanos',
+    emailUs: 'Envíanos un Correo',
+    address: 'Avenida Insurgentes Sur. 2453 int. 201\nCol. Tizapán Alcaldía Álvaro Obregón\nCP 01090 CDMX',
+    email: 'contact@socopwa.com',
+  },
+  cta: {
+    title: '¿Listo para Transformar Tu Negocio?',
+    description: 'Hablemos sobre cómo nuestras soluciones innovadoras pueden ayudar a tu negocio a prosperar en la era digital.',
+  },
+};
