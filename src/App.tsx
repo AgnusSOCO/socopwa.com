@@ -13,6 +13,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import CrispChat from './components/CrispChat';
+import ExitIntentPopup from './components/ExitIntentPopup';
+import TrustBadgeBar from './components/TrustBadgeBar';
+import ROICalculator from './components/ROICalculator';
+import CalendarEmbed from './components/CalendarEmbed';
 
 function App() {
   return (
@@ -30,18 +34,31 @@ function App() {
         <div className="relative z-20">
           <Header />
           <Hero />
+          
+          {/* Trust Badge Bar after Hero */}
+          <TrustBadgeBar />
+          
           <DemoSection />
           <Services />
           <SuccessStories />
           <Partners />
           <TechStack />
           <Certifications />
+          
+          {/* ROI Calculator */}
+          <ROICalculator />
+          
           <FAQ />
+          
+          {/* Calendar Embed */}
+          <CalendarEmbed />
+          
           <Contact />
           <Footer />
         </div>
         
-        {/* Crisp Live Chat Widget */}
+        {/* Conversion Optimization Overlays */}
+        <ExitIntentPopup />
         <CrispChat />
       </div>
     </LanguageProvider>
