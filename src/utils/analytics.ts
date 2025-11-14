@@ -1,3 +1,6 @@
+import { getLeadScoreSummary } from './leadScoring';
+import { getStoredUTMParams } from './utm';
+
 interface EventParams {
   [key: string]: string | number | boolean;
 }
@@ -9,12 +12,29 @@ declare global {
 }
 
 export const trackEvent = (eventName: string, params?: EventParams): void => {
+  const enrichedParams = { ...params };
+  
+  try {
+    const leadScore = getLeadScoreSummary();
+    enrichedParams.lead_score = leadScore.score;
+    enrichedParams.lead_tier = leadScore.tier;
+    
+    const utmParams = getStoredUTMParams();
+    if (utmParams) {
+      if (utmParams.utm_source) enrichedParams.utm_source = utmParams.utm_source;
+      if (utmParams.utm_medium) enrichedParams.utm_medium = utmParams.utm_medium;
+      if (utmParams.utm_campaign) enrichedParams.utm_campaign = utmParams.utm_campaign;
+    }
+  } catch (error) {
+    console.error('Error enriching analytics event:', error);
+  }
+  
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, params);
+    window.gtag('event', eventName, enrichedParams);
   }
 
   if (process.env.NODE_ENV === 'development') {
-    console.log('[Analytics Event]', eventName, params);
+    console.log('[Analytics Event]', eventName, enrichedParams);
   }
 };
 
