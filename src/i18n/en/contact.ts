@@ -1,0 +1,37 @@
+export const contact = {
+  title: 'Get in touch with us.',
+  subtitle: "We're Thrilled to Get Started on Your Project!",
+  interestedIn: 'Interested in:',
+  successMessage: "✓ Thank you for contacting us! We'll get back to you soon.",
+  errorMessage: '✗',
+  form: {
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    phone: 'Phone Number',
+    company: 'Company Name',
+    message: 'Message',
+    required: '*',
+    placeholders: {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john@example.com',
+      phone: '+1 (555) 000-0000',
+      company: 'Your Company',
+      message: 'How can we help you?',
+    },
+    sending: 'Sending...',
+    sendMessage: 'Send Message',
+  },
+  info: {
+    title: 'Contact Information',
+    visitUs: 'Visit Us',
+    emailUs: 'Email Us',
+    address: 'Avenida Insurgentes Sur. 2453 int. 201\nCol. Tizapán Alcaldía Álvaro Obregón\nCP 01090 CDMX',
+    email: 'contact@socopwa.com',
+  },
+  cta: {
+    title: 'Ready to Transform Your Business?',
+    description: "Let's discuss how our innovative solutions can help your business thrive in the digital age.",
+  },
+};

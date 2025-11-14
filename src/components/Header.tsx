@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { goToContact } from '../utils/navigation';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +18,11 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Success Stories', href: '#success' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('header.services'), href: '#services' },
+    { name: t('header.successStories'), href: '#success' },
+    { name: t('header.partners'), href: '#partners' },
+    { name: t('header.certifications'), href: '#certifications' },
+    { name: t('header.contact'), href: '#contact' }
   ];
 
   return (
@@ -62,11 +64,37 @@ const Header: React.FC = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
+            {/* Language Toggle */}
+            <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-1">
+              <button
+                onClick={() => setLang('en')}
+                className={`px-3 py-1 rounded text-sm font-medium transition-all duration-200 ${
+                  lang === 'en'
+                    ? 'bg-white text-black'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLang('es')}
+                className={`px-3 py-1 rounded text-sm font-medium transition-all duration-200 ${
+                  lang === 'es'
+                    ? 'bg-white text-black'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+                aria-label="Cambiar a Español"
+              >
+                ES
+              </button>
+            </div>
+            
             <button 
               onClick={() => goToContact({ source: 'header' })}
               className="bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
             >
-              Get Started
+              {t('common.getStarted')}
             </button>
           </div>
 
@@ -94,6 +122,32 @@ const Header: React.FC = () => {
                 {item.name}
               </a>
             ))}
+            
+            {/* Mobile Language Toggle */}
+            <div className="flex items-center space-x-2 mt-4 mb-2">
+              <Globe size={18} className="text-gray-400" />
+              <button
+                onClick={() => setLang('en')}
+                className={`px-4 py-2 rounded text-sm font-medium transition-all duration-200 ${
+                  lang === 'en'
+                    ? 'bg-white text-black'
+                    : 'bg-white/10 text-gray-300'
+                }`}
+              >
+                English
+              </button>
+              <button
+                onClick={() => setLang('es')}
+                className={`px-4 py-2 rounded text-sm font-medium transition-all duration-200 ${
+                  lang === 'es'
+                    ? 'bg-white text-black'
+                    : 'bg-white/10 text-gray-300'
+                }`}
+              >
+                Español
+              </button>
+            </div>
+            
             <button 
               onClick={() => {
                 goToContact({ source: 'header_mobile' });
@@ -101,7 +155,7 @@ const Header: React.FC = () => {
               }}
               className="w-full bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-lg font-medium mt-4 transition-all duration-200"
             >
-              Get Started
+              {t('common.getStarted')}
             </button>
           </div>
         )}
