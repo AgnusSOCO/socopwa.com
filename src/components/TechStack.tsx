@@ -16,30 +16,51 @@ const TechStack: React.FC = () => {
     { name: 'TensorFlow', logoUrl: 'https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg', categories: ['ai', 'data'], link: 'https://www.tensorflow.org/' },
     { name: 'PyTorch', logoUrl: 'https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg', categories: ['ai', 'data'], link: 'https://pytorch.org/' },
     { name: 'OpenAI', logoUrl: 'https://cdn.worldvectorlogo.com/logos/openai-2.svg', categories: ['ai'], link: 'https://openai.com/' },
+    { name: 'Hugging Face', logoUrl: 'https://huggingface.co/front/assets/huggingface_logo.svg', categories: ['ai', 'data'], link: 'https://huggingface.co/' },
+    { name: 'LangChain', logoUrl: 'https://avatars.githubusercontent.com/u/126733545', categories: ['ai'], link: 'https://www.langchain.com/' },
     
     { name: 'AWS', logoUrl: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', categories: ['cloud', 'devops'], link: 'https://aws.amazon.com/' },
     { name: 'Microsoft Azure', logoUrl: 'https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg', categories: ['cloud', 'devops'], link: 'https://azure.microsoft.com/' },
     { name: 'Google Cloud', logoUrl: 'https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg', categories: ['cloud', 'devops'], link: 'https://cloud.google.com/' },
+    { name: 'DigitalOcean', logoUrl: 'https://www.vectorlogo.zone/logos/digitalocean/digitalocean-icon.svg', categories: ['cloud'], link: 'https://www.digitalocean.com/' },
+    { name: 'Vercel', logoUrl: 'https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg', categories: ['cloud', 'frontend'], link: 'https://vercel.com/' },
     
     { name: 'Palo Alto Networks', logoUrl: 'https://www.vectorlogo.zone/logos/paloaltonetworks/paloaltonetworks-icon.svg', categories: ['security'], link: 'https://www.paloaltonetworks.com/' },
     { name: 'Fortinet', logoUrl: 'https://www.vectorlogo.zone/logos/fortinet/fortinet-icon.svg', categories: ['security'], link: 'https://www.fortinet.com/' },
     { name: 'CrowdStrike', logoUrl: 'https://cdn.worldvectorlogo.com/logos/crowdstrike.svg', categories: ['security'], link: 'https://www.crowdstrike.com/' },
+    { name: 'Cloudflare', logoUrl: 'https://www.vectorlogo.zone/logos/cloudflare/cloudflare-icon.svg', categories: ['security', 'cloud'], link: 'https://www.cloudflare.com/' },
+    { name: 'Okta', logoUrl: 'https://www.vectorlogo.zone/logos/okta/okta-icon.svg', categories: ['security'], link: 'https://www.okta.com/' },
+    { name: 'Snyk', logoUrl: 'https://www.vectorlogo.zone/logos/snyk/snyk-icon.svg', categories: ['security', 'devops'], link: 'https://snyk.io/' },
     
     { name: 'Docker', logoUrl: 'https://www.vectorlogo.zone/logos/docker/docker-icon.svg', categories: ['devops', 'cloud'], link: 'https://www.docker.com/' },
     { name: 'Kubernetes', logoUrl: 'https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg', categories: ['devops', 'cloud'], link: 'https://kubernetes.io/' },
     { name: 'Terraform', logoUrl: 'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg', categories: ['devops', 'cloud'], link: 'https://www.terraform.io/' },
+    { name: 'Jenkins', logoUrl: 'https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg', categories: ['devops'], link: 'https://www.jenkins.io/' },
+    { name: 'GitLab', logoUrl: 'https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg', categories: ['devops'], link: 'https://gitlab.com/' },
+    { name: 'GitHub Actions', logoUrl: 'https://www.vectorlogo.zone/logos/github/github-icon.svg', categories: ['devops'], link: 'https://github.com/features/actions' },
+    { name: 'Ansible', logoUrl: 'https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg', categories: ['devops'], link: 'https://www.ansible.com/' },
     
     { name: 'React', logoUrl: 'https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg', categories: ['frontend'], link: 'https://react.dev/' },
     { name: 'TypeScript', logoUrl: 'https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg', categories: ['frontend', 'backend'], link: 'https://www.typescriptlang.org/' },
     { name: 'Tailwind CSS', logoUrl: 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg', categories: ['frontend'], link: 'https://tailwindcss.com/' },
+    { name: 'Next.js', logoUrl: 'https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg', categories: ['frontend', 'backend'], link: 'https://nextjs.org/' },
+    { name: 'Vue.js', logoUrl: 'https://www.vectorlogo.zone/logos/vuejs/vuejs-icon.svg', categories: ['frontend'], link: 'https://vuejs.org/' },
+    { name: 'Angular', logoUrl: 'https://www.vectorlogo.zone/logos/angular/angular-icon.svg', categories: ['frontend'], link: 'https://angular.io/' },
     
     { name: 'Node.js', logoUrl: 'https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg', categories: ['backend'], link: 'https://nodejs.org/' },
     { name: 'Python', logoUrl: 'https://www.vectorlogo.zone/logos/python/python-icon.svg', categories: ['backend', 'ai', 'data'], link: 'https://www.python.org/' },
     { name: 'PostgreSQL', logoUrl: 'https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg', categories: ['backend', 'data'], link: 'https://www.postgresql.org/' },
-    
     { name: 'MongoDB', logoUrl: 'https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg', categories: ['backend', 'data'], link: 'https://www.mongodb.com/' },
+    { name: 'FastAPI', logoUrl: 'https://cdn.worldvectorlogo.com/logos/fastapi.svg', categories: ['backend'], link: 'https://fastapi.tiangolo.com/' },
+    { name: 'Django', logoUrl: 'https://www.vectorlogo.zone/logos/djangoproject/djangoproject-icon.svg', categories: ['backend'], link: 'https://www.djangoproject.com/' },
+    { name: 'GraphQL', logoUrl: 'https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg', categories: ['backend'], link: 'https://graphql.org/' },
+    
     { name: 'Redis', logoUrl: 'https://www.vectorlogo.zone/logos/redis/redis-icon.svg', categories: ['backend', 'data'], link: 'https://redis.io/' },
     { name: 'Elasticsearch', logoUrl: 'https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg', categories: ['data'], link: 'https://www.elastic.co/' },
+    { name: 'Apache Kafka', logoUrl: 'https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg', categories: ['data', 'backend'], link: 'https://kafka.apache.org/' },
+    { name: 'Snowflake', logoUrl: 'https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg', categories: ['data', 'cloud'], link: 'https://www.snowflake.com/' },
+    { name: 'Apache Spark', logoUrl: 'https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg', categories: ['data'], link: 'https://spark.apache.org/' },
+    { name: 'Tableau', logoUrl: 'https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg', categories: ['data'], link: 'https://www.tableau.com/' },
   ];
 
   const categories = [
